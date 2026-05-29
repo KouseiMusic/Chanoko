@@ -11,6 +11,10 @@ _<p align="center">Rhythmic Filter & Delay Sequencer.</p>_
 
 ---
 
+<img width="1039" height="718" alt="chanokopreview" src="https://github.com/user-attachments/assets/1f68af44-8ea0-4d1d-b31f-c738967c4526" />
+
+---
+
 ## 𝐅𝐞𝐚𝐭𝐮𝐫𝐞𝐬
 
 - **State Variable Filter (SVF)**: Switch between Lowpass, Bandpass and Highpass models with sweeping Cutoff and Resonance controls.
