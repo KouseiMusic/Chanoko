@@ -40,7 +40,7 @@ _<p align="center">Rhythmic Filter & Delay Sequencer.</p>_
 1. Download the latest [`Chanoko`].
 2. Extract & Drag `Chanoko` to your `Applications` folder.
 3. Open `Chanoko`.
-4. Press the Power button to start the audio engine.
+4. Click on `Load` and choose a sample you want to play with.
 
 ---
 
