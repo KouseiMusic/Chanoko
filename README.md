@@ -17,13 +17,39 @@ _<p align="center">Rhythmic Filter & Delay Sequencer.</p>_
 
 ## 𝐅𝐞𝐚𝐭𝐮𝐫𝐞𝐬
 
-- **State Variable Filter (SVF)**: Switch between Lowpass, Bandpass and Highpass models with sweeping Cutoff and Resonance controls.
-- **Time FX Delay**: Versatile delay engine with Time and Feedback controls for complex, echoing textures and spatial depth.
-- **Analog Overdrive**: Push the signal into saturation with the built-in Drive control for grit and harmonic warmth.
-- **16-Step Sequencer**: Shape your sequences dynamically with dedicated per-step level adjustments and global BPM sync.
-- **Live FFT Metering**: Real-time visual feedback of your audio spectrum directly on the interface.
-- **13 Curated Presets**: Instantly recall distinct sonic palettes (Submerged, Acid, Telephone, Dub, Glitch, etc.).
-- **Standalone Desktop Application**: Clean, hardware-inspired UI built for macOS with an efficient and low-latency audio processing.
+- **Digital Bit-Crusher**: Reduce the effective sample rate via decimation and manipulate each of the 8 bits of every audio sample independently. Pass, Mute or Invert for textures ranging from subtle aliasing to extreme digital noise.
+- **State Variable Filter (SVF)**: Switch between Lowpass, Bandpass and Highpass models with sweeping Cutoff and Resonance controls. The filter cutoff is modulated in real time by the sequencer when enabled.
+- **Time FX Delay**: Feedback delay line with adjustable Time and Feedback for complex, echoing textures and spatial depth.
+- **Analog-Style Overdrive**: Push the signal into soft-clip saturation with the built-in Drive control for harmonic warmth and grit. Output is bounded to prevent clipping regardless of drive amount.
+- **16-Step Filter Sequencer**: Modulates the filter cutoff frequency across 16 steps with per-step level control and global BPM sync. Each step value maps to a frequency on a logarithmic scale.
+- **Live FFT Metering**: Real-time frequency spectrum display drawn at native Retina resolution.
+- **14 Curated Presets**: Instantly recall distinct sonic palettes — from lo-fi tape warmth to extreme glitch and chip arpeggiation.
+- **WAV Recorder**: Capture the processed output directly from the master bus to a 16-bit 48 kHz WAV file without any additional software.
+- **Standalone Desktop Application**: Frameless, hardware-inspired UI built for macOS with low-latency audio processing running entirely on the audio thread.
+
+---
+
+## 𝐒𝐢𝐠𝐧𝐚𝐥 𝐂𝐡𝐚𝐢𝐧
+
+The audio signal flows through the following processing stages in order:
+
+```
+Audio File
+    |
+Bit-Crusher  (AudioWorklet — decimation + per-bit operations)
+    |
+Waveshaper   (arctan soft-clip distortion)
+    |
+SVF Filter   (lowpass / bandpass / highpass + resonance)
+    |
+    +---> Dry path -------+
+    |                     |
+    +--> Delay --> Loop ---> Master Gain
+                              |
+                         Brick-Wall Limiter  (-6 dB threshold, 20:1 ratio)
+                              |
+                         FFT Analyser --> Output
+```
 
 ---
 
@@ -37,42 +63,76 @@ _<p align="center">Rhythmic Filter & Delay Sequencer.</p>_
 ## 𝐈𝐧𝐬𝐭𝐚𝐥𝐥𝐚𝐭𝐢𝐨𝐧
 
 ### 𝐒𝐭𝐚𝐧𝐝𝐚𝐥𝐨𝐧𝐞
-1. Download the latest [`Chanoko`](https://github.com/KouseiMusic/Chanoko/releases/tag/Chanoko_1.0.0).
+1. Download the latest [`Chanoko`](https://github.com/KouseiMusic/Chanoko/releases/tag/Chanoko_1.1.0).
 2. Extract & Drag `Chanoko` to your `Applications` folder.
 3. Open `Chanoko`.
-4. Click on `Load` and choose a sample you want to play with.
+4. If macOS shows a Gatekeeper warning on first launch, right-click the application and choose `Open`, then confirm.
+5. Click on `Load` and choose a sample you want to play with.
 
 ---
 
 ## 𝐂𝐨𝐧𝐭𝐫𝐨𝐥𝐬
 
-- **Real-time Audio Processing:** Power on the engine, select your filter type and dial in the sequence to rhythmically modify the signal.
+- **Real-time Audio Processing:** Load an audio file, select your filter type and dial in the sequencer to rhythmically modulate the signal. Enable the WAV recorder before playback to capture the output.
+
+### 𝐃𝐢𝐠𝐢𝐭𝐚𝐥 𝐂𝐨𝐫𝐞
+
+| Control | Description | Range |
+| :--- | :--- | :--- |
+| **Sample Clock** | Decimation factor. Higher values reduce the effective sample rate and introduce aliasing. | 1 to 200 |
+| **Dist Drive** | Soft-clip saturation amount applied after the bit-crusher. | 0.0 to 1.0 |
+| **Bit 0 – 7** | Per-bit operation for each of the 8 bits of every sample. Pass, Mute, or Invert. | — |
 
 ### 𝐒𝐕𝐅 & 𝐓𝐢𝐦𝐞 𝐅𝐗
 
 | Control | Description | Range |
 | :--- | :--- | :--- |
-| **Cutoff (Hz)** | Adjusts the filter's cutoff frequency. | 20 to 20000 |
-| **Resonance** | Accentuates the frequencies around the cutoff point. | 0.1 to 30.0 |
-| **Filter Type** | Toggles between LOWPASS, BANDPASS and HIGHPASS models. | - |
-| **Drive** | Overdrives the signal for analog-style warmth or distortion. | 0.0 to 1.0 |
-| **Delay Time** | Sets the delay repeat interval (time between echoes). | 0.05 to 2.0 |
-| **Feedback** | Determines how many times the delayed signal repeats. | 0.0 to 0.95 |
+| **Cutoff (Hz)** | Adjusts the filter's cutoff frequency. Overridden by the sequencer when enabled. | 20 to 20000 |
+| **Resonance** | Accentuates the frequencies around the cutoff point. | 0.1 to 18.0 |
+| **Filter Type** | Toggles between LOWPASS, BANDPASS and HIGHPASS models. | — |
+| **Delay Time** | Sets the delay repeat interval (time between echoes). | 0.05 to 1.5 s |
+| **Feedback** | Determines how many times the delayed signal repeats. | 0.0 to 0.80 |
 
 ### 𝐒𝐞𝐪𝐮𝐞𝐧𝐜𝐞𝐫
 
-| Control | Description |
-| :--- | :--- |
-| **Steps Array** | 16 individual step sliders to sequence parameters over time. |
-| **BPM** | Adjusts the global tempo of the sequencer (60 - 200 BPM). |
+| Control | Description | Range |
+| :--- | :--- | :--- |
+| **Steps Array** | 16 individual step sliders. Each step sets the filter cutoff value for that beat, mapped logarithmically to 20 Hz–20 kHz. | 0.0 to 1.0 per step |
+| **BPM** | Adjusts the global tempo of the sequencer. Steps advance in 16th notes. | 40 to 240 BPM |
+| **Seq ON / OFF** | Enables or disables sequencer modulation of the filter cutoff. | — |
 
 ### 𝐆𝐥𝐨𝐛𝐚𝐥 𝐂𝐨𝐧𝐭𝐫𝐨𝐥𝐬
 
 | Control | Description |
 | :--- | :--- |
-| **Power** | Activates the main audio engine and sequencer playback. |
-| **Presets** | Dropdown menu featuring 13 distinct audio configurations. |
 | **VOL** | Master output volume knob. |
+| **Presets** | Dropdown menu featuring 14 distinct audio configurations. |
+| **Record (●)** | Starts and stops WAV recording of the processed output. Click again to stop and save the file. |
+| **Play (▶)** | Starts audio playback and the sequencer. |
+| **Pause (❚❚)** | Pauses audio playback. The sequencer position is held. |
+| **Stop (■)** | Stops playback, resets the sequencer to step 1. |
+| **Load** | Opens a file picker to load any audio file. |
+
+---
+
+## 𝐏𝐫𝐞𝐬𝐞𝐭𝐬
+
+| Name | Character |
+| :--- | :--- |
+| **INIT** | Neutral starting point. All processing minimal, sequencer off. |
+| **ARCADE NOISE** | Moderate decimation with bit inversion, bright lowpass tone. |
+| **CYBER DRONE** | Slow bandpass sequencer at 80 BPM with long feedback echo. |
+| **DUB ECHO** | Warm lowpass with syncopated sequencer at 140 BPM and long echo tail. |
+| **ACID BASS** | High-resonance lowpass sequencer at 125 BPM. |
+| **LO-FI TAPE** | Gentle bit reduction, warm lowpass roll-off, short room echo. |
+| **BROKEN GEAR** | Heavy decimation, all bits alternating mute/invert, slow irregular sequencer. |
+| **CHIP ARP** | Chiptune-style arpeggiated filter at 180 BPM with short delay. |
+| **GHOST RES** | Near-resonant bandpass with slow rising sequencer and long delay. |
+| **GLITCH SEQ** | Aggressive bit manipulation, fast highpass sequencer at 160 BPM. |
+| **SUB PING** | Mid-frequency bandpass ping with long, sparse delay tail. |
+| **MUTANT FM** | Maximum decimation with alternating bit operations, fast sequencer. |
+| **STUTTER CHOIR** | Lower bits muted, very short flutter echo producing stutter effect. |
+| **METAL SCRAP** | Heavy decimation, metallic highpass character, driving sequencer. |
 
 ---
 
