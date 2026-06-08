@@ -1,6 +1,6 @@
 <p align="center"><img width="180" height="138" alt="chanokobannersmall" src="https://github.com/user-attachments/assets/00d635b4-5c39-4bf4-8910-b787abc2b9d9" /></p>
 
-_<p align="center">Rhythmic Filter & Delay Sequencer.</p>_
+_<p align="center">Distortion, Rhythmic Filter & Delay Sequencer.</p>_
 
 ---
 
@@ -36,13 +36,13 @@ The audio signal flows through the following processing stages in order:
 ```
 Audio File
     |
-Bit-Crusher  (AudioWorklet — decimation + per-bit operations)
+Bit-Crusher  (AudioWorklet — Decimation + Per-Bit Operations)
     |
-Waveshaper   (arctan soft-clip distortion)
+Waveshaper   (Arctan Soft-Clip Distortion)
     |
-SVF Filter   (lowpass / bandpass / highpass + resonance)
+SVF Filter   (Lowpass / Bandpass / Highpass + Resonance)
     |
-    +---> Dry path -------+
+    +---> Dry Path -------+
     |                     |
     +--> Delay --> Loop ---> Master Gain
                               |
