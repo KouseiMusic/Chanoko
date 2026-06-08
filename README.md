@@ -63,7 +63,7 @@ SVF Filter   (Lowpass / Bandpass / Highpass + Resonance)
 ## 𝐈𝐧𝐬𝐭𝐚𝐥𝐥𝐚𝐭𝐢𝐨𝐧
 
 ### 𝐒𝐭𝐚𝐧𝐝𝐚𝐥𝐨𝐧𝐞
-1. Download the latest [`Chanoko`](https://github.com/KouseiMusic/Chanoko/releases/tag/Chanoko_1.1.0).
+1. Download the latest [`Chanoko`](https://github.com/KouseiMusic/Chanoko/releases/download/Chanoko_1.1.0/Chanoko.1.1.0.macOS.U2B.zip).
 2. Extract & Drag `Chanoko` to your `Applications` folder.
 3. Open `Chanoko`.
 4. If macOS shows a Gatekeeper warning on first launch, right-click the application and choose `Open`, then confirm.
