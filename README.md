@@ -8,6 +8,7 @@ _<p align="center">Distortion, Rhythmic Filter & Delay Sequencer.</p>_
 ![macOS Support](https://img.shields.io/badge/macOS-Sonoma%20%7C%20Sequoia%20%7C%20Tahoe-000000?style=flat-square&logo=apple&logoColor=white)
 ![Architecture](https://img.shields.io/badge/Architecture-Intel%20%7C%20Arm64%20%7C%20U2B-black?labelColor=606060&style=flat-square&logo=apple&logoColor=white)
 ![Format](https://img.shields.io/badge/Format-Standalone-00CED1?style=flat-square)
+![DAW](https://img.shields.io/badge/DAW-Ableton%20Live%2012%2B-000000?style=flat-square&logo=abletonlive&logoColor=white)
 
 ---
 
@@ -56,7 +57,9 @@ SVF Filter   (Lowpass / Bandpass / Highpass + Resonance)
 ## 𝐒𝐲𝐬𝐭𝐞𝐦 𝐑𝐞𝐪𝐮𝐢𝐫𝐞𝐦𝐞𝐧𝐭𝐬
 
 - **macOS**: 14.0 (Sonoma), 15.0 (Sequoia) or 16.0 (Tahoe).
-- **Architecture**: Intel, Arm64 (Silicon) & U2B (Universal).
+- **Architecture**: Intel (x64), Arm64 (Silicon) & U2B (Universal).
+- **DAW (plugin mode)**: Ableton Live 12 or 11, Logic Pro, Reason with the [BlackHole](https://github.com/ExistentialAudio/BlackHole) virtual audio driver for DAW routing in standalone mode.
+> AU and VST3 plugin formats are currently under development.
 
 ---
 
@@ -68,6 +71,14 @@ SVF Filter   (Lowpass / Bandpass / Highpass + Resonance)
 3. Open `Chanoko`.
 4. If macOS shows a Gatekeeper warning on first launch, right-click the application and choose `Open`, then confirm.
 5. Click on `Load` and choose a sample you want to play with.
+
+### 𝐀𝐮𝐝𝐢𝐨 𝐔𝐧𝐢𝐭 (𝐀𝐔)
+
+> Under Development
+
+### 𝐕𝐒𝐓𝟑
+
+> Under Development
 
 ---
 
@@ -133,6 +144,16 @@ SVF Filter   (Lowpass / Bandpass / Highpass + Resonance)
 | **MUTANT FM** | Maximum decimation with alternating bit operations, fast sequencer. |
 | **STUTTER CHOIR** | Lower bits muted, very short flutter echo producing stutter effect. |
 | **METAL SCRAP** | Heavy decimation, metallic highpass character, driving sequencer. |
+
+---
+
+## 𝐃𝐀𝐖 𝐔𝐬𝐚𝐠𝐞
+
+**Standalone + BlackHole**: Install the [`BlackHole`](https://github.com/ExistentialAudio/BlackHole) virtual audio driver, set `Chanoko` output to `BlackHole` in macOS `Audio MIDI Setup`, and route `BlackHole` as an input track in your DAW. This allows you to record the output in real time or resample it.
+
+**MIDI input**: Connect a MIDI controller before launching. `Chanoko` responds to note-on and note-off messages on any channel. Each MIDI note triggers a full chord built on that note using the current Voices and Base Note settings.
+
+**AU / VST3**: Plugin formats are under development. When available they will support full parameter automation and direct DAW audio routing without `BlackHole`.
 
 ---
 
