@@ -58,8 +58,8 @@ SVF Filter   (Lowpass / Bandpass / Highpass + Resonance)
 
 - **macOS**: 14.0 (Sonoma), 15.0 (Sequoia) or 16.0 (Tahoe).
 - **Architecture**: Intel (x64), Silicon (x64) & Universal (U2B).
-- **DAW (plugin mode)**: Ableton Live 12 or 11, Logic Pro, Reason with the [BlackHole](https://github.com/ExistentialAudio/BlackHole) virtual audio driver for DAW routing in standalone mode.
-> AU and VST3 plugin formats are currently under development.
+- **DAW (Plugin mode)**: Ableton Live 12 or 11, Logic Pro, Reason with the [BlackHole](https://github.com/ExistentialAudio/BlackHole) virtual audio driver for DAW routing in standalone mode.
+> Audio Unit (AU) and VST3 plugin formats are currently under development.
 
 ---
 
@@ -151,7 +151,7 @@ SVF Filter   (Lowpass / Bandpass / Highpass + Resonance)
 
 **Standalone + BlackHole**: Install the [`BlackHole`](https://github.com/ExistentialAudio/BlackHole) virtual audio driver, set `Chanoko` output to `BlackHole` in macOS `Audio MIDI Setup`, and route `BlackHole` as an input track in your DAW. This allows you to record the output in real time or resample it.
 
-**AU / VST3**: Plugin formats are under development. When available they will support full parameter automation and direct DAW audio routing without `BlackHole`.
+**Audio Unit (AU) & VST3**: Plugins formats are under development. When available they will support full parameter automation and direct DAW audio routing without `BlackHole`.
 
 ---
 
