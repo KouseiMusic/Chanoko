@@ -57,7 +57,7 @@ SVF Filter   (Lowpass / Bandpass / Highpass + Resonance)
 ## 𝐒𝐲𝐬𝐭𝐞𝐦 𝐑𝐞𝐪𝐮𝐢𝐫𝐞𝐦𝐞𝐧𝐭𝐬
 
 - **macOS**: 14.0 (Sonoma), 15.0 (Sequoia) or 16.0 (Tahoe).
-- **Architecture**: Intel (x64), Arm64 (Silicon) & U2B (Universal).
+- **Architecture**: Intel (x64), Silicon (x64) & Universal (U2B).
 - **DAW (plugin mode)**: Ableton Live 12 or 11, Logic Pro, Reason with the [BlackHole](https://github.com/ExistentialAudio/BlackHole) virtual audio driver for DAW routing in standalone mode.
 > AU and VST3 plugin formats are currently under development.
 
