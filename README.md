@@ -66,7 +66,7 @@ SVF Filter   (Lowpass / Bandpass / Highpass + Resonance)
 ## 𝐈𝐧𝐬𝐭𝐚𝐥𝐥𝐚𝐭𝐢𝐨𝐧
 
 ### 𝐒𝐭𝐚𝐧𝐝𝐚𝐥𝐨𝐧𝐞
-1. Download the latest [`Chanoko`](https://github.com/KouseiMusic/Chanoko/releases/download/Chanoko_1.1.0/Chanoko.1.1.0.macOS.U2B.zip).
+1. Download the latest [`Chanoko`](https://github.com/KouseiMusic/Chanoko/releases/download/Chanoko_1.1.0/Chanoko.1.1.0.macOS.Universal.zip).
 2. Extract & Drag `Chanoko` to your `Applications` folder.
 3. Open `Chanoko`.
 4. If macOS shows a Gatekeeper warning on first launch, right-click the application and choose `Open`, then confirm.
@@ -92,7 +92,7 @@ SVF Filter   (Lowpass / Bandpass / Highpass + Resonance)
 | :--- | :--- | :--- |
 | **Sample Clock** | Decimation factor. Higher values reduce the effective sample rate and introduce aliasing. | 1 to 200 |
 | **Dist Drive** | Soft-clip saturation amount applied after the bit-crusher. | 0.0 to 1.0 |
-| **Bit 0 – 7** | Per-bit operation for each of the 8 bits of every sample. Pass, Mute, or Invert. | — |
+| **Bit 0 – 7** | Per-bit operation for each of the 8 bits of every sample. Pass, Mute or Invert. | - |
 
 ### 𝐒𝐕𝐅 & 𝐓𝐢𝐦𝐞 𝐅𝐗
 
@@ -100,7 +100,7 @@ SVF Filter   (Lowpass / Bandpass / Highpass + Resonance)
 | :--- | :--- | :--- |
 | **Cutoff (Hz)** | Adjusts the filter's cutoff frequency. Overridden by the sequencer when enabled. | 20 to 20000 |
 | **Resonance** | Accentuates the frequencies around the cutoff point. | 0.1 to 18.0 |
-| **Filter Type** | Toggles between LOWPASS, BANDPASS and HIGHPASS models. | — |
+| **Filter Type** | Toggles between LOWPASS, BANDPASS and HIGHPASS models. | - |
 | **Delay Time** | Sets the delay repeat interval (time between echoes). | 0.05 to 1.5 s |
 | **Feedback** | Determines how many times the delayed signal repeats. | 0.0 to 0.80 |
 
@@ -108,9 +108,9 @@ SVF Filter   (Lowpass / Bandpass / Highpass + Resonance)
 
 | Control | Description | Range |
 | :--- | :--- | :--- |
-| **Steps Array** | 16 individual step sliders. Each step sets the filter cutoff value for that beat, mapped logarithmically to 20 Hz–20 kHz. | 0.0 to 1.0 per step |
+| **Steps Array** | 16 individual step sliders. Each step sets the filter cutoff value for that beat, mapped logarithmically to 20 Hz-20 kHz. | 0.0 to 1.0 per step |
 | **BPM** | Adjusts the global tempo of the sequencer. Steps advance in 16th notes. | 40 to 240 BPM |
-| **Seq ON / OFF** | Enables or disables sequencer modulation of the filter cutoff. | — |
+| **Seq ON / OFF** | Enables or disables sequencer modulation of the filter cutoff. | - |
 
 ### 𝐆𝐥𝐨𝐛𝐚𝐥 𝐂𝐨𝐧𝐭𝐫𝐨𝐥𝐬
 
