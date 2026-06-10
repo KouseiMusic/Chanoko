@@ -30,30 +30,6 @@
 
 ---
 
-## 𝐒𝐢𝐠𝐧𝐚𝐥 𝐂𝐡𝐚𝐢𝐧
-
-The audio signal flows through the following processing stages in order:
-
-```
-Audio File
-    |
-Bit-Crusher  (AudioWorklet — Decimation + Per-Bit Operations)
-    |
-Waveshaper   (Arctan Soft-Clip Distortion)
-    |
-SVF Filter   (Lowpass / Bandpass / Highpass + Resonance)
-    |
-    +---> Dry Path -------+
-    |                     |
-    +--> Delay --> Loop ---> Master Gain
-                              |
-                         Brick-Wall Limiter  (-6 dB threshold, 20:1 ratio)
-                              |
-                         FFT Analyser --> Output
-```
-
----
-
 ## 𝐒𝐲𝐬𝐭𝐞𝐦 𝐑𝐞𝐪𝐮𝐢𝐫𝐞𝐦𝐞𝐧𝐭𝐬
 
 - **macOS**: 14.0 (Sonoma), 15.0 (Sequoia) or 16.0 (Tahoe).
@@ -79,6 +55,15 @@ SVF Filter   (Lowpass / Bandpass / Highpass + Resonance)
 ### 𝐕𝐒𝐓𝟑
 
 > Under Development
+
+## 𝐃𝐀𝐖 𝐔𝐬𝐚𝐠𝐞
+
+1. Install [`BlackHole`](https://github.com/ExistentialAudio/BlackHole), a free virtual audio driver for macOS.
+2. Open `Audio MIDI Setup` (found in `/Applications/Utilities/`).
+3. Create a `Multi-Output Device` that includes both your `Audio Interface` and `BlackHole`.
+4. Set the `Multi-Output Device` as the system output in `System Settings` > `Sound`.
+5. In your `DAW`, create an `Audio Input Track` and set its input source to `BlackHole`.
+6. You can now record or monitor `Chanoko`'s output in real time.
 
 ---
 
@@ -147,11 +132,65 @@ SVF Filter   (Lowpass / Bandpass / Highpass + Resonance)
 
 ---
 
-## 𝐃𝐀𝐖 𝐔𝐬𝐚𝐠𝐞
+## 𝐒𝐢𝐠𝐧𝐚𝐥 𝐂𝐡𝐚𝐢𝐧
 
-**Standalone + BlackHole**: Install the [`BlackHole`](https://github.com/ExistentialAudio/BlackHole) virtual audio driver, set `Chanoko` output to `BlackHole` in macOS `Audio MIDI Setup`, and route `BlackHole` as an input track in your DAW. This allows you to record the output in real time or resample it.
+```
+┌─────────────────────────────────────────────────────────────────────────┐
+│                          CHANOKO SIGNAL PATH                            │
+└─────────────────────────────────────────────────────────────────────────┘
 
-**Audio Unit (AU) & VST3**: Plugins formats are under development. When available they will support full parameter automation and direct DAW audio routing without `BlackHole`.
+  AUDIO FILE
+  (WAV / AIFF / MP3 / AAC / FLAC)
+       │
+       ▼
+┌─────────────┐
+│ BIT-CRUSHER │  AudioWorklet-based processing.
+│             │  Decimation (Sample Rate) + Per-Bit Operations.
+└──────┬──────┘
+       │
+       ▼
+┌─────────────┐
+│ WAVESHAPER  │  Arctan Soft-Clip Distortion.
+│             │  Non-linear saturation and harmonic shaping.
+└──────┬──────┘
+       │
+       ▼
+┌─────────────┐
+│ SVF FILTER  │  State Variable Filter (LP / BP / HP).
+│             │  Resonant frequency control and slope shaping.
+└──────┬──────┘
+       │
+       ├──────────────────────────────────────┐
+       │                                      │
+       ▼                                      ▼
+  (Dry Path)                        ┌─────────────────────────────────┐
+       │                            │           DELAY UNIT            │
+       │                            │  Time-based signal repetition   │
+       │                            │  with dedicated Feedback Loop.  │
+       │                            └─────────────────┬───────────────┘
+       │                                              │
+       │                                              │
+       ▼                                              ▼
+┌─────────────────────────────────────────────────────────────────────────┐
+│                               MASTER GAIN                               │
+│                      Overall Amplitude Control                          │
+└────────────────────────────────────┬────────────────────────────────────┘
+                                     │
+                                     ▼
+                      ┌───────────────────────────────┐
+                      │           LIMITER             │
+                      │Threshold: -6 dB | Ratio: 20:1 │
+                      └──────────────┬────────────────┘
+                                     │
+                                     ▼
+                      ┌───────────────────────────────┐
+                      │          FFT ANALYSER         │
+                      │   Real-time Visual Spectrum   │
+                      └──────────────┬────────────────┘
+                                     │
+                                     ▼
+                                AUDIO OUTPUT
+```
 
 ---
 
