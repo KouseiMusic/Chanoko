@@ -77,7 +77,7 @@
 | :--- | :--- | :--- |
 | **Sample Clock** | Facteur de décimation. Les valeurs élevées réduisent la fréquence d'échantillonnage effective et introduisent de l'aliasing. | 1 à 200 |
 | **Dist Drive** | Quantité de saturation soft-clip appliquée après le bit-crusher. | 0.0 à 1.0 |
-| **Bit 0 – 7** | Opération par bit pour chacun des 8 bits de chaque échantillon. Pass, Mute ou Invert. | - |
+| **Bit 0 - 7** | Opération par bit pour chacun des 8 bits de chaque échantillon. Pass, Mute ou Invert. | - |
 
 ### 𝐒𝐕𝐅 & 𝐓𝐢𝐦𝐞 𝐅𝐗
 
