@@ -20,6 +20,7 @@
 
 - **Digital Bit-Crusher**: Reduce the effective sample rate via decimation and manipulate each of the 8 bits of every audio sample independently. Pass, Mute or Invert for textures ranging from subtle aliasing to extreme digital noise.
 - **State Variable Filter (SVF)**: Switch between Lowpass, Bandpass and Highpass models with sweeping Cutoff and Resonance controls. The filter cutoff is modulated in real time by the sequencer when enabled.
+- **Port & Reinterpretation of the [Biscuit](https://www.otomachines.com/product/biscuit/) from Oto Machines**: <br> <img width="165" height="106" alt="biscuit" src="https://github.com/user-attachments/assets/724715c9-c78c-455d-b7b4-856e278ec45b" />
 - **Time FX Delay**: Feedback delay line with adjustable Time and Feedback for complex, echoing textures and spatial depth.
 - **Analog-Style Overdrive**: Push the signal into soft-clip saturation with the built-in Drive control for harmonic warmth and grit. Output is bounded to prevent clipping regardless of drive amount.
 - **16-Step Filter Sequencer**: Modulates the filter cutoff frequency across 16 steps with per-step level control and global BPM sync. Each step value maps to a frequency on a logarithmic scale.
@@ -194,7 +195,7 @@
 
 ---
 
-_This software is free. Don't forget to give it a ⭐ on Github if you liked the project._
+_This software is free and not affiliated with Oto Machines. Don't forget to give it a ⭐ on Github if you liked the project._
 
 ---
 
